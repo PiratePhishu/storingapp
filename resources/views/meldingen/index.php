@@ -40,6 +40,7 @@
                 <th>Melder</th>
                 <th>Overige info</th>
                 <th>Prioriteit</th>
+                <th>aanpassen</th>
             </tr>
 
         <?php foreach ($meldingen as $melding):?>
@@ -55,6 +56,8 @@
                 else{
                     echo "nee";
                 } ?></td>
+                <td><a href="edit.php?id=<?php echo $melding ['id'];?>">aanpassen</a></td>
+            </tr>
         <?php endforeach; ?>
 
 
