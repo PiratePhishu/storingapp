@@ -1,5 +1,9 @@
 <?php
 
+
+$action = $_POST['action'];
+
+if ($action == 'create'){
 //Variabelen vullen
 $attractie = $_POST['attractie'];
 if(empty($attractie))
@@ -62,3 +66,11 @@ $statement->execute([
     
 
 header("Location: ../../../resources/views/meldingen/index.php?msg=Meldingopgeslagen");
+}
+if (action =='update'){
+    require_once '../../../config/conn.php';
+}
+if (action =='delete')
+{
+
+}

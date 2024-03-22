@@ -45,7 +45,9 @@
         // exit();
         ?>
 
-        <form action="........." method="POST">
+        <form action="<?php echo $base_url; ?>/app/Http/Controllers/meldingenController.php" method="POST">
+            <input type="hidden" name ="action" value="update">
+            <input type="hidden"name ="id" value="<?php echo $id;?>">
             <!-- (voeg hier opdracht 7 toe) -->
 
             <div class="form-group">
