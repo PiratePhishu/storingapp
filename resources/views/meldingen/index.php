@@ -26,13 +26,7 @@
             $query="SELECT*FROM meldingen";
             $statement = $conn->prepare($query);
             $statement->execute();
-            $meldingen = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-//            print_r($meldingen);
-//          echo "<pre>";
-//              echo "<p>" . $melding['attractie'] . "</p>";
-//         echo "</pre>";
-//            ?>
+            $meldingen = $statement->fetchAll(PDO::FETCH_ASSOC);?>
         <table>
             <tr>
                 <th>Attractie</th>
