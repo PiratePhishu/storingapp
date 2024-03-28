@@ -63,14 +63,87 @@ $statement->execute([
     ":capaciteit"=>$capaciteit,
     ":prioriteit"=>$prioriteit,
     ":overig"=>$overig]);
-    
+
 
 header("Location: ../../../resources/views/meldingen/index.php?msg=Meldingopgeslagen");
 }
-if (action =='update'){
-    require_once '../../../config/conn.php';
-}
-if (action =='delete')
-{
 
+
+
+
+
+if ($action == "update") {
+
+    $id = $_POST['id'];
+
+    $capaciteit = $_POST['capaciteit'];
+    if (!is_numeric($capaciteit)) {
+        $errors[] = "Vul voor capaciteit geldig getal in";
+    }
+
+    $melder = $_POST['melder'];
+    if (empty($melder)) {
+        $errors[] = "Vul melder's naam in";
+    }
+
+    $overige_info = $_POST['overige_info'];
+
+    if (isset($_POST['prioriteit'])) {
+        $prioriteit = 1;
+    } else {
+        $prioriteit = 0;
+    }
+
+    if (isset($errors)) {
+        var_dump($errors);
+        die();
+    }
+    //verbind
+    require_once '../../../config/conn.php';
+    // query
+    $query = "
+        UPDATE meldingen
+        SET capaciteit = :capaciteit,
+            melder = :melder,
+            overige_info = :overig,
+            prioriteit = :prioriteit
+    WHERE id = :id    ";
+
+        //3. Prepare
+        $statement = $conn->prepare($query);
+
+        //4. Execute
+        $statement->execute([
+            ":melder" => $melder,
+            ":capaciteit" => $capaciteit,
+            ":prioriteit" => $prioriteit,
+            ":overig" => $overig,
+            ":id" => $id
+        ]);
+        header("Location: ../../../resources/views/meldingen/index.php?msg=Melding aangepast");
+}
+
+
+
+
+
+if ($action == "delete") {
+
+    $id = $_POST['id'];
+
+    //1. Verbinding
+    require_once '../../../config/conn.php';
+
+    //2. Query
+    $query = "DELETE FROM meldingen
+         WHERE id = :id";
+
+    //3. Prepare
+    $statement = $conn->prepare($query);
+
+    //4. Execute
+    $statement->execute([
+        ":id" => $id
+    ]);
+    header("Location: ../../../resources/views/meldingen/index.php?msg=Melding Verwijderd");
 }

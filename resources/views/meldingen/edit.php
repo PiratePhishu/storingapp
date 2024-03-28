@@ -53,7 +53,7 @@
             <div class="form-group">
                 <label>Naam attractie:</label>
                 <input type="text" name="attractie" id="attractie" class="form-input"
-                value="<?php echo $meldingen['attractie']; ?>"> 
+                value="<?php echo $meldingen['attractie']; ?>">
             </div>
 
             <!-- Zorg dat het type wordt getoond, net als de naam hierboven -->
@@ -67,13 +67,13 @@
                 <!-- Let op: de checkbox blijft nu altijd uit, pas dit nog aan -->
                 <label for="prioriteit">Melding met prioriteit</label>
                 <input type="checkbox" name="prioriteit" id="prioriteit"<?php if($meldingen['prioriteit']) echo 'checked';?>>
-                
+
             </div>
             <div class="form-group">
                 <label for="melder">Naam melder:</label>
                 <!-- Voeg hieronder nog een value-attribuut toe, zoals bij capaciteit -->
                 <input type="text" name="melder" id="melder" class="form-input"
-                value="<?php echo $meldingen['capaciteit']; ?>">
+                value="<?php echo $meldingen['melder']; ?>">
             </div>
             <div class="form-group">
                 <label for="overig">Overige info:</label>
@@ -81,8 +81,12 @@
             </div>
             <input type="submit" value="Melding opslaan">
         </form>
+        <form action="<?php echo $base_url; ?>/app/Http/Controllers/meldingenController.php" method="POST">
+        <input type="hidden" name="action" value="delete">
+        <input type= "hidden" name="id" value="<?php echo $id;?>">
+        <input type= "submit" value="Verwijderen">
+        </form>
     </div>
-
 </body>
 
 </html>
