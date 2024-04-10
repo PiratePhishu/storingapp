@@ -50,7 +50,7 @@
             </div>
             <div class="form-group">
                 <label for="overig_info">overige info:</label>
-                <textarea name = "overig" id="overig"class="form-input"rows="4"></textarea>
+                <textarea name = "overig" id="overig" class="form-input" rows="4"></textarea>
             </div>
 
             <input type="submit" value="Verstuur melding">

@@ -86,7 +86,7 @@ if ($action == "update") {
         $errors[] = "Vul melder's naam in";
     }
 
-    $overige_info = $_POST['overige_info'];
+    $overige_info = $_POST['overig'];
 
     if (isset($_POST['prioriteit'])) {
         $prioriteit = 1;
@@ -117,7 +117,7 @@ if ($action == "update") {
             ":melder" => $melder,
             ":capaciteit" => $capaciteit,
             ":prioriteit" => $prioriteit,
-            ":overig" => $overig,
+            ":overig" => $overige_info,
             ":id" => $id
         ]);
         header("Location: ../../../resources/views/meldingen/index.php?msg=Melding aangepast");
