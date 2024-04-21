@@ -146,4 +146,5 @@ if ($action == "delete") {
         ":id" => $id
     ]);
     header("Location: ../../../resources/views/meldingen/index.php?msg=Melding Verwijderd");
+    
 }
